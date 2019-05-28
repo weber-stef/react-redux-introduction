@@ -1,4 +1,4 @@
-Introduction to React &amp; Redux Basics
+React &amp; Redux To-do List
 ===
 
 Following this tutorial you'll review those topics:
@@ -13,6 +13,8 @@ Following this tutorial you'll review those topics:
 - Routing with React Router    
 - Implementing Redux  
 - Usage of Redux Dev Tools
+
+Check the live [Demo](https://fbw-12.github.io/react-redux-introduction/)
 
 
 # 1. Real World Showcase
