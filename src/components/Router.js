@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Rote, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import App from "./App";
-import Help frpm "./Help";
+import Help from "./Help";
 import NotFound from "./NotFound";
 
 const Router = () => (

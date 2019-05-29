@@ -1,9 +1,7 @@
-import React, { Fragment } from "react"
+import React from "react";
 import { render } from "react-dom";
-import Header from "./components/Header"
-import ToDoList from "./components/ToDoList"
-import App from "./components/App";
+import Router from "./components/Router";
 
 import "./sass/style.scss";
 
-render(<App />, document.querySelector("#main"));
+render(<Router />, document.querySelector("#main"));
