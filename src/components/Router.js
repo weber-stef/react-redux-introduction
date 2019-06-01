@@ -11,7 +11,8 @@ const Router = () => (
       <Route path="/help" component={Help} />
       <Route component={NotFound} />
 
-    </Switch></BrowserRouter>
+    </Switch>
+  </BrowserRouter>
 
 )
 
