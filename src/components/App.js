@@ -2,7 +2,6 @@ import React from "react";
 import Header from "./Header";
 import ToDoForm from "./ToDoForm";
 import ToDoList from "./ToDoList";
-import { getRandomTagline } from "../helpers.js";
 import uuid from "uuid/v4";
 
 class App extends React.Component {
@@ -24,12 +23,39 @@ class App extends React.Component {
       return state;
     });
   };
+  updateToDoText = (uuid, text) => {
+    this.setState(state => {
+      state.toDoItems[uuid].text = text;
+      return state;
+    });
+  };
+
+  toggleToDoDone = event => {
+    const checkbox = event.target;
+
+    this.setState(state => {
+      state.toDoItems[checkbox.value].done = checkbox.checked;
+      return state;
+    });
+  };
+
+  removeToDo = uuid => {
+    this.setState(state => {
+      delete state.toDoItems[uuid];
+      return state;
+    });
+  };
   render() {
     return (
       <div className="container">
-        <Header tagline={getRandomTagline()} />
+        <Header tagline="Here are all the next tasks." />
         <ToDoForm addToDo={this.addToDo} />
-        <ToDoList />
+        <ToDoList
+          items={this.state.toDoItems}
+          updateToDoText={this.updateToDoText}
+          toggleToDoDone={this.toggleToDoDone}
+          removeToDo={this.removeToDo}
+        />
       </div>
     );
   }
