@@ -1,9 +1,10 @@
 import React from "react";
 import ToDoItem from "./ToDoItem";
+import { connect } from "react-redux";
 
 class ToDoList extends React.Component {
   filteredItems = () => {
-    const filtered = [];
+    let itemsFiltered = [];
 
     for (const uuid in this.props.items) {
       const item = this.props.items[uuid];
@@ -13,11 +14,11 @@ class ToDoList extends React.Component {
         (this.props.filter === "done" && item.done === true) ||
         (this.props.filter === "undone" && item.done === false)
       ) {
-        filtered.push(item);
+        itemsFiltered.push(item);
       }
     }
 
-    return filtered;
+    return itemsFiltered;
   };
 
   render() {
@@ -25,15 +26,9 @@ class ToDoList extends React.Component {
       <div className="todo-list">
         <table className="todo-items table table-borderless">
           <tbody>
-            {this.filteredItems().map(item => (
-              <ToDoItem
-                key={`todo-item-${item.uuid}`}
-                data={item}
-                updateToDoText={this.props.updateToDoText}
-                toggleToDoDone={this.props.toggleToDoDone}
-                removeToDo={this.props.removeToDo}
-              />
-            ))}
+            {this.filteredItems().map(item => {
+              return <ToDoItem key={`todo-item-${item.uuid}`} data={item} />;
+            })}
           </tbody>
         </table>
       </div>
@@ -41,4 +36,7 @@ class ToDoList extends React.Component {
   }
 }
 
-export default ToDoList;
+export default connect(state => ({
+  items: state.toDoItems,
+  filter: state.filter
+}))(ToDoList);
